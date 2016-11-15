@@ -1,0 +1,177 @@
+<link href="http://fonts.googleapis.com/css?family=Gravitas One" rel="stylesheet" type="text/css" />
+
+{{extend 'layout.html'}}
+
+{{block head}}
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+    var get_posts_url = "{{=URL('api', 'get_posts')}}";
+    var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";
+    var del_post_url = "{{=URL('api', 'del_post', user_signature=True)}}";
+    var edit_post_url = "{{=URL('api', 'edit_post', user_signature=True)}}";
+    var reply_post_url = "{{=URL('api', 'reply_post', user_signature=True)}}";
+
+
+</script>
+{{end}}
+
+<div class="main_content">
+{{if auth.user_id:}}
+    <div id="vue-div" class="display:none">
+
+        <h2>Posts</h2>
+
+        <div class="add-new-post">
+            <button v-if="!is_adding_post" class="btn btn-primary btn-lg" v-on:click="add_post_button()" v-bind:class="{'disabled': !logged_in}"><i class="fa fa-plus"></i> Add Post</button>
+        </div>
+
+        <div v-if="is_adding_post" id="add_post_div"><br>
+            <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
+                <div class="form-group" id="add-new-post">
+                    <textarea class="form-control" v-model="form_content"></textarea><br>
+                    <input class="btn btn-primary btn-lg" id="add_post_submit" type="submit" value="Post"/>
+                    <input class="btn btn-default btn-lg" id="add_post_cancel" type="button" value="Cancel" v-on:click="add_post_button()"/>
+                </div>
+            </form>
+        </div>
+
+        <div v-for="post in posts" class="post_list">
+            <div class="post">
+                <div v-if="!(edit_post_id == post.id)">
+                    <h3>${post.post_content}</h3>
+                    <br>Author: <i>${post.user_email}</i>
+                    <br>Date: <i>${post.created_on}</i>
+                    <div v-if="post.created_on != post.updated_on">
+                        Updated: <i>${post.updated_on}</i>
+                    </div>
+                    <div v-if="logged_in" class="icons">
+                        <i class="fa fa-pencil" v-if="post.op" v-on:click="update_post(post.id, post.post_content)"></i>
+                        <i class="fa fa-trash-o" v-if="post.op" v-on:click="delete_post(post.id)"></i>
+                    </div>
+                    <div v-if="logged_in" class="icons">
+                        <i class="fa fa-reply" v-if="!post.op" v-on:click="reply_post_button(post.id)"></i>
+                        <i class="fa fa-caret-up" v-if="post.replies && !is_expanded" v-on:click="expand_reply_button(post.id)"></i>
+                        <i class="fa fa-caret-down" v-if="post.replies && is_expanded" v-on:click="expand_reply_button(post.id)"></i>
+                    </div>
+                    <div v-if="logged_in">
+                        <div v-if="is_replying_post" id="reply_post_div"><br>
+                            <form action="#" v-on:submit.prevent="reply_post" class="form-horizontal" enctype="multipart/form-data" method="post" v-if="reply_post_id == post.id">
+                                <div class="form-group" id="reply-new-post">
+                                    <textarea class="form-control" v-model="form_reply_content"></textarea><br>
+                                    <div class="text_btns">
+                                        <input class="btn btn-primary btn-lg" id="reply_post_submit" type="submit" value="Reply"/>
+                                        <input class="btn btn-default btn-lg" id="reply_post_cancel" type="button" value="Cancel" v-on:click="reply_post_button()" v-on:click="reply_post_id = null" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <form action="#" v-on:submit.prevent="edit_post" class="form-horizontal" enctype="multipart/form-data" method="post" v-if="edit_post_id == post.id">
+                    <div class="form-group">
+                        <textarea class="form-control" v-model="form_edit_content"></textarea><br>
+                        <div class="text_btns">
+                            <input class="btn btn-primary btn-lg" id="edit_post_submit" type="submit" value="Edit"/>
+                            <input class="btn btn-default btn-lg" id="edit_post_cancel" type="button" value="Cancel" v-on:click="edit_post_id = null"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <transition name="slide-fade">
+            <div v-if="post.replies && !is_expanded">
+                <div v-for="reply in post.replies" class="rply_post">
+                    <h4>${reply.post_content}</h4>
+                    <br>Author: <i>${reply.user_email}</i>
+                    <br>Date: <i>${reply.created_on}</i>
+                </div>
+            </div>
+            </transition>
+        </div>
+
+        <div v-if="has_more" class="show_more">
+            <button class="btn btn-default btn-lg" id="load-more" v-on:click="get_more()">Load more</button>
+        </div>
+
+    </div>
+
+{{else:}}
+
+    <!-- Homepage -->
+    <h1 class="title">PeerPressure</h1>
+
+    <div class="homebtns">
+        <a href="{{=URL('user', '')}}" class="btn btn-primary btn-lg raised">Login</a>
+        <a href="{{=URL('user/register', '')}}" class="btn btn-default btn-lg raised">Sign Up</a>
+    </div>
+
+    <hr class="hrline">
+
+    <div>
+        <div class="homedesc" style="float: left; width: 50%">
+            <h3>What is PeerPressure?</h3>
+            <p>PeerPressure is a website which is based on peer collaboration.  Students are able to create posts
+            regarding any subject up for discussion such as: homework problems, school events, or study groups.  The possibilities
+            are endless!  After this other students can respond to the original post, adding additional information, answering a question,
+            or just providing feedback.  This peer-to-peer communication empowers students to help their fellow classmates and
+            encourages teamwork and collaboration.</p>
+        </div>
+        <div class="homeimg" style="float: left; width: 50%">
+            <div id="slider">
+                <div v-for="number in [currentNumber]">
+                    <transition name="fade">
+                        <img :src="images[Math.abs(currentNumber) % images.length]" class="imgresize" />
+                    </transition>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="hrline2">
+
+    <div>
+        <div class="homeimg2" style="float: left; width: 55%">
+            <i class="fa fa-users fa-5x" aria-hidden="true"></i>
+            &emsp;&emsp;&emsp;&emsp;&emsp;
+            <i class="fa fa-plus-circle fa-5x" aria-hidden="true"></i>
+            &emsp;&emsp;&emsp;&emsp;&emsp;
+            <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
+            &emsp;&emsp;&emsp;&emsp;&emsp;
+            <i class="fa fa-trash fa-5x" aria-hidden="true"></i>
+            &emsp;&emsp;&emsp;&emsp;&emsp;
+            <i class="fa fa-reply fa-5x" aria-hidden="true"></i>
+        </div>
+        <div class="homedesc" style="float: right; width: 45%">
+            <h3>Features</h3>
+            <ul>
+                <li>Unique user accounts - Individual accounts for each student</li>
+                <li>Create posts - Topics are unlimited</li>
+                <li>Edit posts - Change your question or your responses</li>
+                <li>Delete posts - Get rid of invalid information</li>
+                <li>Reply to posts - Collaboration between students</li>
+                <li>Posts show creator and when it was created</li>
+                <li>Ask questions and get answers 24/7 - Not just in the classroom</li>
+            </ul>
+    </div>
+
+    <div>
+        <div class="home_screenshot" style="float: left; width: 55%">
+            <img src="{{=URL('static', 'images/screenshot.png')}}" />
+        </div>
+        <div class="homedesign" style="float: right; width: 45%">
+            <h3>Design</h3><br>
+            <ol>
+                <li>Easy to read posts identifying when and by whom the post was created</li>
+                <br>
+                <li>Edit and delete functionality</li>
+                <br>
+                <li>Reply to another user's post</li>
+            </ol>
+        </div>
+    </div>
+{{pass}}
+</div>
+
+<script src="{{=URL('static', 'js/default_index.js')}}"></script>
+    <script>$( document ).ready(function() {
+        APP.img.startRotation();
+    });</script>

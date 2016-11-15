@@ -1,0 +1,219 @@
+(dp1
+S'output'
+p2
+S'Unable to open included view file: /Users/Steven/Documents/CS183/web2py/applications/final_project/views/layout_mod.html'
+p3
+sS'layer'
+p4
+S'ParserContainer'
+p5
+sS'code'
+p6
+S'<link href="http://fonts.googleapis.com/css?family=Gravitas One" rel="stylesheet" type="text/css" />\n\n{{extend \'layout_mod.html\'}}\n\n{{block head}}\n<script src="{{=URL(\'static\', \'js/vue.js\')}}"></script>\n<script>\n    var get_posts_url = "{{=URL(\'api\', \'get_posts\')}}";\n    var add_post_url = "{{=URL(\'api\', \'add_post\', user_signature=True)}}";\n    var del_post_url = "{{=URL(\'api\', \'del_post\', user_signature=True)}}";\n    var edit_post_url = "{{=URL(\'api\', \'edit_post\', user_signature=True)}}";\n    var reply_post_url = "{{=URL(\'api\', \'reply_post\', user_signature=True)}}";\n</script>\n{{end}}\n\n<div class="main_content">\n{{if auth.user_id:}}\n    <div id="vue-div" class="display:none">\n\n        <h2>Posts</h2>\n\n        <div class="add-new-post">\n            <button v-if="!is_adding_post" class="btn btn-primary btn-lg" v-on:click="add_post_button()" v-bind:class="{\'disabled\': !logged_in}"><i class="fa fa-plus"></i> Add Post</button>\n        </div>\n\n        <div v-if="is_adding_post" id="add_post_div"><br>\n            <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">\n                <div class="form-group" id="add-new-post">\n                    <textarea class="form-control" v-model="form_content"></textarea><br>\n                    <input class="btn btn-primary btn-lg" id="add_post_submit" type="submit" value="Post"/>\n                    <input class="btn btn-default btn-lg" id="add_post_cancel" type="button" value="Cancel" v-on:click="add_post_button()"/>\n                </div>\n            </form>\n        </div>\n\n        <div v-for="post in posts" class="post_list">\n            <div class="post">\n                <div v-if="!(edit_post_id == post.id)">\n                    <h3>${post.post_content}</h3>\n                    <br>Author: <i>${post.user_email}</i>\n                    <br>Date: <i>${post.created_on}</i>\n                    <div v-if="post.created_on != post.updated_on">\n                        Updated: <i>${post.updated_on}</i>\n                    </div>\n                    <div v-if="logged_in" class="icons">\n                        <i class="fa fa-pencil" v-if="post.op" v-on:click="update_post(post.id, post.post_content)"></i>\n                        <i class="fa fa-trash-o" v-if="post.op" v-on:click="delete_post(post.id)"></i>\n                    </div>\n                    <div v-if="logged_in" class="icons">\n                        <i class="fa fa-reply" v-if="!post.op" v-on:click="reply_post_button(post.id)"></i>\n                    </div>\n                    <div v-if="logged_in">\n                        <div v-if="is_replying_post" id="reply_post_div"><br>\n                            <form action="#" v-on:submit.prevent="reply_post" class="form-horizontal" enctype="multipart/form-data" method="post" v-if="reply_post_id == post.id">\n                                <div class="form-group" id="reply-new-post">\n                                    <textarea class="form-control" v-model="form_reply_content"></textarea><br>\n                                    <div class="text_btns">\n                                        <input class="btn btn-primary btn-lg" id="reply_post_submit" type="submit" value="Reply"/>\n                                        <input class="btn btn-default btn-lg" id="reply_post_cancel" type="button" value="Cancel" v-on:click="reply_post_button()" v-on:click="reply_post_id = null" />\n                                    </div>\n                                </div>\n                            </form>\n                        </div>\n                    </div>\n                </div>\n                <form action="#" v-on:submit.prevent="edit_post" class="form-horizontal" enctype="multipart/form-data" method="post" v-if="edit_post_id == post.id">\n                    <div class="form-group">\n                        <textarea class="form-control" v-model="form_edit_content"></textarea><br>\n                        <div class="text_btns">\n                            <input class="btn btn-primary btn-lg" id="edit_post_submit" type="submit" value="Edit"/>\n                            <input class="btn btn-default btn-lg" id="edit_post_cancel" type="button" value="Cancel" v-on:click="edit_post_id = null"/>\n                        </div>\n                    </div>\n                </form>\n            </div>\n        </div>\n\n        <div v-if="has_more" class="show_more">\n            <button class="btn btn-default btn-lg" id="load-more" v-on:click="get_more()">Load more</button>\n        </div>\n\n    </div>\n\n{{else:}}\n\n    <!-- Homepage -->\n    <h1 class="title">PeerPressure</h1>\n\n    <div class="homebtns">\n        <a href="{{=URL(\'user\', \'\')}}" class="btn btn-primary btn-lg raised">Login</a>\n        <a href="{{=URL(\'user/register\', \'\')}}" class="btn btn-default btn-lg raised">Sign Up</a>\n    </div>\n\n    <hr class="hrline">\n\n    <div>\n        <div class="homedesc" style="float: left; width: 50%">\n            <h3>What is PeerPressure?</h3>\n            <p>PeerPressure is a website which is based on peer collaboration.  Students are able to create posts\n            regarding any subject up for discussion such as: homework problems, school events, or study groups.  The possibilities\n            are endless!  After this other students can respond to the original post, adding additional information, answering a question,\n            or just providing feedback.  This peer-to-peer communication empowers students to help their fellow classmates and\n            encourages teamwork and collaboration.</p>\n        </div>\n        <div class="homeimg" style="float: left; width: 50%">\n            <image-slider>\n                <div v-for="number in [currentNumber]" transition="fade">\n                    <img :src="images[Math.abs(currentNumber) % images.length]" class="imgresize" v-on:mouseover="stopRotation" v-on:mouseout="startRotation"/>\n                </div>\n            </image-slider>\n        </div>\n    </div>\n\n    <div>\n        <div class="homeimg2" style="float: left; width: 55%">\n            <i class="fa fa-users fa-5x" aria-hidden="true"></i>\n            &emsp;&emsp;&emsp;&emsp;&emsp;\n            <i class="fa fa-plus-circle fa-5x" aria-hidden="true"></i>\n            &emsp;&emsp;&emsp;&emsp;&emsp;\n            <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>\n            &emsp;&emsp;&emsp;&emsp;&emsp;\n            <i class="fa fa-trash fa-5x" aria-hidden="true"></i>\n            &emsp;&emsp;&emsp;&emsp;&emsp;\n            <i class="fa fa-reply fa-5x" aria-hidden="true"></i>\n        </div>\n        <div class="homedesc" style="float: right; width: 45%">\n            <h3>Features</h3>\n            <ul>\n                <li>Unique user accounts - Individual accounts for each student</li>\n                <li>Create posts - Topics are unlimited</li>\n                <li>Edit posts - Change your question or your responses</li>\n                <li>Delete posts - Get rid of invalid information</li>\n                <li>Reply to posts - Collaboration between students</li>\n                <li>Posts show creator and when it was created</li>\n                <li>Ask questions and get answers 24/7 - Not just in the classroom</li>\n            </ul>\n    </div>\n\n{{pass}}\n</div>\n\n<script src="{{=URL(\'static\', \'js/default_index.js\')}}"></script>\n'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__getslice__'
+p12
+S"<method-wrapper '__getslice__' of exceptions.IOError object>"
+p13
+sS'__str__'
+p14
+S"<method-wrapper '__str__' of exceptions.IOError object>"
+p15
+sS'__reduce__'
+p16
+S'<built-in method __reduce__ of exceptions.IOError object>'
+p17
+sS'__dict__'
+p18
+S'{}'
+p19
+sS'__sizeof__'
+p20
+S'<built-in method __sizeof__ of exceptions.IOError object>'
+p21
+sS'__init__'
+p22
+S"<method-wrapper '__init__' of exceptions.IOError object>"
+p23
+sS'__setattr__'
+p24
+S"<method-wrapper '__setattr__' of exceptions.IOError object>"
+p25
+sS'__reduce_ex__'
+p26
+S'<built-in method __reduce_ex__ of exceptions.IOError object>'
+p27
+sS'__new__'
+p28
+S'<built-in method __new__ of type object>'
+p29
+sS'errno'
+p30
+S'2'
+sS'__format__'
+p31
+S'<built-in method __format__ of exceptions.IOError object>'
+p32
+sS'__class__'
+p33
+S"<type 'exceptions.IOError'>"
+p34
+sS'filename'
+p35
+S"'/Users/Steven/Documents/CS183/web2py/applications/final_project/views/layout_mod.html'"
+p36
+sS'__doc__'
+p37
+S"'I/O operation failed.'"
+p38
+sS'__getitem__'
+p39
+S"<method-wrapper '__getitem__' of exceptions.IOError object>"
+p40
+sS'__setstate__'
+p41
+S'<built-in method __setstate__ of exceptions.IOError object>'
+p42
+sS'__getattribute__'
+p43
+S"<method-wrapper '__getattribute__' of exceptions.IOError object>"
+p44
+sS'args'
+p45
+S"(2, 'No such file or directory')"
+p46
+sS'__subclasshook__'
+p47
+S'<built-in method __subclasshook__ of type object>'
+p48
+sS'__unicode__'
+p49
+S'<built-in method __unicode__ of exceptions.IOError object>'
+p50
+sS'strerror'
+p51
+S"'No such file or directory'"
+p52
+sS'__delattr__'
+p53
+S"<method-wrapper '__delattr__' of exceptions.IOError object>"
+p54
+sS'__repr__'
+p55
+S"<method-wrapper '__repr__' of exceptions.IOError object>"
+p56
+sS'__hash__'
+p57
+S"<method-wrapper '__hash__' of exceptions.IOError object>"
+p58
+ssS'evalue'
+p59
+S"[Errno 2] No such file or directory: '/Users/Steven/Documents/CS183/web2py/applications/final_project/views/layout_mod.html'"
+p60
+sS'frames'
+p61
+(lp62
+(dp63
+S'file'
+p64
+S'/Users/Steven/Documents/CS183/web2py/gluon/template.py'
+p65
+sS'dump'
+p66
+(dp67
+S'builtinopen'
+p68
+S'<built-in function open>'
+p69
+sS'fileobj'
+p70
+S'undefined'
+p71
+sS'filepath'
+p72
+S"'/Users/Steven/Documents/CS183/web2py/applications/final_project/views/layout_mod.html'"
+p73
+ssS'lnum'
+p74
+I450
+sS'lines'
+p75
+(dp76
+I448
+S'        # try to read the text.'
+p77
+sI449
+S'        try:'
+p78
+sI450
+S"            fileobj = open(filepath, 'rb')"
+p79
+sI451
+S'            text = fileobj.read()'
+p80
+sI452
+S'            fileobj.close()'
+p81
+sI453
+S'        except IOError:'
+p82
+sI454
+S"            self._raise_error('Unable to open included view file: ' + filepath)"
+p83
+sI445
+S'        # Get the path of the file on the system.'
+p84
+sI446
+S'        filepath = self.path and os.path.join(self.path, filename) or filename'
+p85
+sI447
+S''
+ssS'call'
+p86
+S"(self=<gluon.template.TemplateParser object>, filename='layout_mod.html')"
+p87
+sS'func'
+p88
+S'_get_file_text'
+p89
+sasS'pyver'
+p90
+S'Python 2.7.10: /usr/bin/python (prefix: /System/Library/Frameworks/Python.framework/Versions/2.7)'
+p91
+sS'etype'
+p92
+S"<type 'exceptions.IOError'>"
+p93
+sS'date'
+p94
+S'Wed Nov  9 21:15:57 2016'
+p95
+sS'locals'
+p96
+(dp97
+S'self'
+p98
+S'<gluon.template.TemplateParser object>'
+p99
+sS'filepath'
+p100
+S"'/Users/Steven/Documents/CS183/web2py/applications/final_project/views/layout_mod.html'"
+p101
+sS'context'
+p102
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'AppConfig': <function AppConfig>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, ...}"
+p103
+sg35
+S"'layout_mod.html'"
+p104
+sssS'traceback'
+p105
+S'Traceback (most recent call last):\n  File "/Users/Steven/Documents/CS183/web2py/gluon/template.py", line 450, in _get_file_text\n    fileobj = open(filepath, \'rb\')\nIOError: [Errno 2] No such file or directory: \'/Users/Steven/Documents/CS183/web2py/applications/final_project/views/layout_mod.html\'\n'
+p106
+s.

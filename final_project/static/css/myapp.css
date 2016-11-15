@@ -1,0 +1,419 @@
+/* line 1, ../sass/_main.scss */
+.main_logo_true {
+  color: #4f80d2;
+  font-weight: bold;
+}
+
+/* line 5, ../sass/_main.scss */
+.main_logo_review {
+  color: #ef9746;
+  font-weight: bold;
+}
+
+/* line 10, ../sass/_main.scss */
+.button_row_right {
+  float: right;
+  padding-bottom: 20px;
+}
+
+/* line 15, ../sass/_main.scss */
+.title {
+  font-family: 'Gravitas One', display;
+  text-align: center;
+  text-size: 1px;
+}
+
+/* line 21, ../sass/_main.scss */
+.homebtns {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* line 27, ../sass/_main.scss */
+.hrline {
+  width: 93%;
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 2px solid #ccc;
+  padding: 0;
+}
+
+/* line 37, ../sass/_main.scss */
+.hrline2 {
+  width: 85%;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  padding: 0;
+}
+
+/* line 47, ../sass/_main.scss */
+.homedesc {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 15.5px;
+}
+
+/* line 55, ../sass/_main.scss */
+.homeimg {
+  padding-top: 20px;
+  padding-right: 10%;
+  padding-bottom: 40px;
+  padding-left: 3%;
+}
+
+/* line 62, ../sass/_main.scss */
+.homeimg2 {
+  padding-top: 8%;
+  padding-left: 4%;
+}
+
+/* line 67, ../sass/_main.scss */
+.home_screenshot img {
+  height: auto;
+  width: 100%;
+  padding-top: 20%;
+  padding-left: 40px;
+}
+
+/* line 74, ../sass/_main.scss */
+.homedesign {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 100px;
+  padding-bottom: 20px;
+  font-size: 15.5px;
+}
+
+/* line 82, ../sass/_main.scss */
+.btn {
+  padding: 14px 24px;
+  border: 0 none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* line 89, ../sass/_main.scss */
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+/* line 93, ../sass/_main.scss */
+.btn-primary {
+  background: #0099cc;
+  color: #ffffff;
+}
+
+/* line 97, ../sass/_main.scss */
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  background: #33a6cc;
+}
+
+/* line 100, ../sass/_main.scss */
+.btn-primary:active, .btn-primary.active {
+  background: #007299;
+  box-shadow: none;
+}
+
+/* line 105, ../sass/_main.scss */
+.btn-lg {
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+/* line 111, ../sass/_main.scss */
+.btn-primary.raised {
+  box-shadow: 0 3px 0 0 #007299;
+}
+
+/* line 114, ../sass/_main.scss */
+.btn-primary.raised:active, .btn-primary.raised.active {
+  background: #33a6cc;
+  box-shadow: none;
+  margin-bottom: -3px;
+  margin-top: 3px;
+}
+
+/* line 121, ../sass/_main.scss */
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+  background: #6C6C6C;
+}
+
+/* line 125, ../sass/_main.scss */
+.btn-default.raised {
+  box-shadow: 0 3px 0 0 #1E1E1E;
+}
+
+/* line 128, ../sass/_main.scss */
+.btn-default.raised:active, .btn-primary.raised.active {
+  background: #747474;
+  box-shadow: none;
+  margin-bottom: -3px;
+  margin-top: 3px;
+}
+
+/* line 135, ../sass/_main.scss */
+.imgresize {
+  width: 125%;
+  height: 250px;
+  padding-right: 40px;
+  align: left;
+}
+
+/* line 142, ../sass/_main.scss */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+/* line 145, ../sass/_main.scss */
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+}
+
+/* line 149, ../sass/_main.scss */
+.slide-fade-enter-active {
+  transition: all .5s ease;
+}
+
+/* line 152, ../sass/_main.scss */
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+/* line 155, ../sass/_main.scss */
+.slide-fade-enter, .slide-fade-leave-active {
+  padding-left: 10px;
+  opacity: 0;
+}
+
+/* line 160, ../sass/_main.scss */
+.add-new-post {
+  align: center;
+}
+
+/* line 164, ../sass/_main.scss */
+.new_post {
+  padding-top: 20px;
+}
+
+/* line 168, ../sass/_main.scss */
+.icons {
+  padding-left: 95%;
+}
+
+/* line 172, ../sass/_main.scss */
+.text_btns {
+  padding-left: 40%;
+}
+
+/* line 176, ../sass/_main.scss */
+.main_content {
+  display: block;
+  clear: both;
+}
+/* line 179, ../sass/_main.scss */
+.main_content .splash_container {
+  text-align: center;
+}
+/* line 181, ../sass/_main.scss */
+.main_content .splash_container .main_splash {
+  color: #aaa;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: inline-block;
+  width: 90%;
+}
+/* line 187, ../sass/_main.scss */
+.main_content .splash_container .main_splash h3 {
+  font-size: 1.1em;
+  color: #aaa;
+}
+/* line 190, ../sass/_main.scss */
+.main_content .splash_container .main_splash h3 .fa {
+  margin-right: 0.5em;
+}
+/* line 197, ../sass/_main.scss */
+.main_content .post {
+  border-color: #cccccc;
+  border-style: solid;
+  border-width: 1px;
+  background: #eeeeee;
+  margin: 20px 0px 20px 0px;
+  padding: 20px;
+  -moz-border-radius: 16px;
+  -webkit-border-radius: 16px;
+  border-radius: 16px;
+}
+/* line 207, ../sass/_main.scss */
+.main_content .rply_post {
+  border-color: #cccccc;
+  border-style: solid;
+  border-width: 1px;
+  background: #eeeeee;
+  margin: 20px 0px 40px 5%;
+  padding: 10px;
+  -moz-border-radius: 16px;
+  -webkit-border-radius: 16px;
+  border-radius: 16px;
+}
+/* line 217, ../sass/_main.scss */
+.main_content .post_listing {
+  margin: 10px 0px 10px 0px;
+  padding: 0 0 0 0px;
+}
+/* line 222, ../sass/_main.scss */
+.main_content .post_list {
+  padding-top: 10px;
+}
+/* line 226, ../sass/_main.scss */
+.main_content .post_info {
+  padding-right: 50px;
+}
+/* line 230, ../sass/_main.scss */
+.main_content .vue_hidden {
+  display: none;
+}
+/* line 234, ../sass/_main.scss */
+.main_content i.fa {
+  padding-right: 5px;
+}
+/* line 238, ../sass/_main.scss */
+.main_content .login_explanation {
+  margin-top: 10px;
+  color: #aaa;
+}
+/* line 243, ../sass/_main.scss */
+.main_content div.main_section {
+  margin-top: 4em;
+}
+/* line 247, ../sass/_main.scss */
+.main_content div.main_icon_section {
+  margin-top: 5em;
+  color: #ddd;
+}
+/* line 252, ../sass/_main.scss */
+.main_content div.container_buttons {
+  width: 90%;
+}
+/* line 254, ../sass/_main.scss */
+.main_content div.container_buttons button#save_later_button {
+  float: right;
+}
+/* line 257, ../sass/_main.scss */
+.main_content div.container_buttons button.btn-default {
+  color: #777;
+}
+/* line 261, ../sass/_main.scss */
+.main_content h1 {
+  font-size: 500%;
+}
+
+/* line 266, ../sass/_main.scss */
+.footer {
+  background: none;
+}
+
+/* line 269, ../sass/_main.scss */
+h2 {
+  color: #999;
+}
+
+/*
+.btn {
+  margin: 4px 2px;
+  text-shadow: none;
+  &.disabled {
+    cursor: not-allowed;
+    pointer-events: all !important; // Due to bug in bootstrap
+  }
+}
+*/
+/* line 1, ../sass/_navbar.scss */
+.navbar-inverse {
+  background-color: #dddddd;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y3ZjdmNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f7f7f7), color-stop(100%, #dddddd));
+  background-image: -moz-linear-gradient(#f7f7f7, #dddddd);
+  background-image: -webkit-linear-gradient(#f7f7f7, #dddddd);
+  background-image: linear-gradient(#f7f7f7, #dddddd);
+  border-color: #bbb;
+}
+/* line 5, ../sass/_navbar.scss */
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-inverse .navbar-nav > .open > a:hover {
+  background-color: #dddddd;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y3ZjdmNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f7f7f7), color-stop(100%, #dddddd));
+  background-image: -moz-linear-gradient(#f7f7f7, #dddddd);
+  background-image: -webkit-linear-gradient(#f7f7f7, #dddddd);
+  background-image: linear-gradient(#f7f7f7, #dddddd);
+}
+/* line 9, ../sass/_navbar.scss */
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > li > a {
+  color: #999;
+}
+/* line 11, ../sass/_navbar.scss */
+.navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #777;
+}
+
+/* line 16, ../sass/_navbar.scss */
+.navbar-brand {
+  font-size: 2em;
+}
+
+/* line 20, ../sass/_navbar.scss */
+.navbar .nav {
+  font-size: 1.0em;
+}
+
+/* line 2, ../sass/_tables.scss */
+div.result_table table {
+  width: 100%;
+  margin: 1em auto 1em auto;
+}
+/* line 5, ../sass/_tables.scss */
+div.result_table table tr {
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+/* line 8, ../sass/_tables.scss */
+div.result_table table tr:first-child {
+  border-top: 1px solid #ddd;
+}
+/* line 12, ../sass/_tables.scss */
+div.result_table table th {
+  padding: 5px 0.5em 5px 0.5em;
+  background: #dddddd;
+}
+/* line 16, ../sass/_tables.scss */
+div.result_table table td {
+  padding: 4px 0.5em 4px 0.5em;
+}
+
+/* line 22, ../sass/_tables.scss */
+div.table_footer {
+  display: block;
+  width: 90%;
+  margin: auto;
+  text-align: right;
+  color: #666;
+}
+/* line 28, ../sass/_tables.scss */
+div.table_footer span.pagine {
+  color: #777;
+  cursor: pointer;
+}
+/* line 31, ../sass/_tables.scss */
+div.table_footer span.pagine.disabled i.fa {
+  color: #ddd;
+  cursor: not-allowed;
+}

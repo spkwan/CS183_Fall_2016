@@ -1,0 +1,282 @@
+.main_logo_true {
+  color: $clrLogoSimil;
+  font-weight: bold;
+}
+.main_logo_review {
+  color: $clrLogoCheck;
+  font-weight: bold;
+}
+
+.button_row_right {
+  float: right;
+  padding-bottom: 20px;
+}
+
+.title {
+  font-family: 'Gravitas One', display;
+  text-align: center;
+  text-size: 1px;
+}
+
+.homebtns {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.hrline {
+   width: 93%;
+   display: block;
+   height: 2px;
+   border: 0;
+   border-top: 2px solid #ccc;
+   padding: 0;
+
+}
+
+.hrline2 {
+   width: 85%;
+   display: block;
+   height: 1px;
+   border: 0;
+   border-top: 1px solid #ccc;
+   padding: 0;
+
+}
+
+.homedesc {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 15.5px;
+}
+
+.homeimg {
+  padding-top: 20px;
+  padding-right: 10%;
+  padding-bottom: 40px;
+  padding-left: 3%;
+}
+
+.homeimg2 {
+  padding-top: 8%;
+  padding-left: 4%;
+}
+
+.home_screenshot img {
+    height: auto;
+    width: 100%;
+    padding-top: 20%;
+    padding-left: 40px;
+}
+
+.homedesign {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 100px;
+  padding-bottom: 20px;
+  font-size: 15.5px;
+}
+
+.btn {
+  padding: 14px 24px;
+  border: 0 none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+.btn-primary {
+  background: #0099cc;
+  color: #ffffff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  background: #33a6cc;
+}
+.btn-primary:active, .btn-primary.active {
+  background: #007299;
+  box-shadow: none;
+}
+
+.btn-lg {
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.btn-primary.raised {
+  box-shadow: 0 3px 0 0 #007299;
+}
+.btn-primary.raised:active, .btn-primary.raised.active {
+  background: #33a6cc;
+  box-shadow: none;
+  margin-bottom: -3px;
+  margin-top: 3px;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+  background: #6C6C6C;
+}
+
+.btn-default.raised {
+  box-shadow: 0 3px 0 0 #1E1E1E;
+}
+.btn-default.raised:active, .btn-primary.raised.active {
+  background: #747474;
+  box-shadow: none;
+  margin-bottom: -3px;
+  margin-top: 3px;
+}
+
+.imgresize {
+  width: 125%;
+  height: 250px;
+  padding-right: 40px;
+  align: left;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+
+.slide-fade-enter-active {
+  transition: all .5s ease;
+}
+.slide-fade-leave-active {
+  transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-active {
+  padding-left: 10px;
+  opacity: 0;
+}
+
+.add-new-post {
+  align: center;
+}
+
+.new_post {
+  padding-top: 20px;
+}
+
+.icons {
+  padding-left: 95%;
+}
+
+.text_btns {
+  padding-left: 40%;
+}
+
+.main_content {
+  display: block;
+  clear: both;
+  .splash_container {
+    text-align: center;
+    .main_splash {
+      color: $clrMainSplash;
+      font-size: 1.2em;
+      font-weight: bold;
+      display: inline-block;
+      width: 90%;
+      h3 {
+        font-size: 1.1em;
+        color: $clrMainSplash;
+        .fa {
+          margin-right: 0.5em;
+        }
+      }
+    }
+  }
+
+  .post {
+    border-color: $clrPostBorder;
+    border-style: solid;
+    border-width: 1px;
+    background: $clrPostBackground;
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    @include border-radius(16px);
+  }
+
+  .rply_post {
+    border-color: $clrPostBorder;
+    border-style: solid;
+    border-width: 1px;
+    background: $clrPostBackground;
+    margin: 20px 0px 40px 5%;
+    padding: 10px;
+    @include border-radius(16px);
+  }
+
+  .post_listing {
+    margin: 10px 0px 10px 0px;
+    padding: 0 0 0 0px;
+  }
+
+  .post_list {
+    padding-top: 10px;
+  }
+
+  .post_info {
+    padding-right: 50px;
+  }
+
+  .vue_hidden {
+    display: none;
+  }
+
+  i.fa {
+    padding-right: 5px;
+  }
+
+  .login_explanation {
+    margin-top: 10px;
+    color: $clrLoginHelp;
+  }
+
+  div.main_section {
+    margin-top: 4em;
+  }
+
+  div.main_icon_section {
+    margin-top: 5em;
+    color: $clrLightIcons;
+  }
+
+  div.container_buttons {
+    width: 90%;
+    button#save_later_button {
+      float: right;
+    }
+    button.btn-default {
+      color: $clrDarkIcons;
+    }
+  }
+  h1 {
+    font-size: 500%;
+  }
+}
+
+.footer {
+  background: none;
+}
+h2 {
+  color: $clrIcons;
+}
+/*
+.btn {
+  margin: 4px 2px;
+  text-shadow: none;
+  &.disabled {
+    cursor: not-allowed;
+    pointer-events: all !important; // Due to bug in bootstrap
+  }
+}
+*/
+
