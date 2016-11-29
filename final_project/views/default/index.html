@@ -1,4 +1,4 @@
-<link href="http://fonts.googleapis.com/css?family=Gravitas One" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 
 {{extend 'layout.html'}}
 
@@ -10,16 +10,15 @@
     var del_post_url = "{{=URL('api', 'del_post', user_signature=True)}}";
     var edit_post_url = "{{=URL('api', 'edit_post', user_signature=True)}}";
     var reply_post_url = "{{=URL('api', 'reply_post', user_signature=True)}}";
-
-
 </script>
 {{end}}
 
 <div class="main_content">
 {{if auth.user_id:}}
     <div id="vue-div" class="display:none">
-
-        <h2>Posts</h2>
+        <div class="header">
+            <h1>Posts</h1>
+        </div>
 
         <div class="add-new-post">
             <button v-if="!is_adding_post" class="btn btn-primary btn-lg" v-on:click="add_post_button()" v-bind:class="{'disabled': !logged_in}"><i class="fa fa-plus"></i> Add Post</button>
@@ -28,17 +27,32 @@
         <div v-if="is_adding_post" id="add_post_div"><br>
             <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
                 <div class="form-group" id="add-new-post">
-                    <textarea class="form-control" v-model="form_content"></textarea><br>
-                    <input class="btn btn-primary btn-lg" id="add_post_submit" type="submit" value="Post"/>
-                    <input class="btn btn-default btn-lg" id="add_post_cancel" type="button" value="Cancel" v-on:click="add_post_button()"/>
+                    <textarea class="form-control" v-model="form_title" placeholder="Title"></textarea><br>
+                    <textarea class="form-control" v-model="form_content" placeholder="Content"></textarea><br>
+                    <div class="add-post-submission">
+                        <input class="btn btn-primary btn-lg" id="add_post_submit" type="submit" value="Post"/>
+                        <input class="btn btn-warning btn-lg" id="add_post_cancel" type="button" value="Cancel" v-on:click="add_post_button()"/>
+                    </div>
                 </div>
             </form>
+        </div>
+
+        <div class="filter">
+            <div class="dropdown">
+                <button onclick="dropdown()" class="dropbtn"><i class="fa fa-filter"></i>Filter-Date</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="http://127.0.0.1:8000/final_project/default/author">Author</a>
+                    <a href="http://127.0.0.1:8000/final_project">Date</a>
+                    <a href="http://127.0.0.1:8000/final_project/default/title">Title</a>
+            </div>
+        </div>
         </div>
 
         <div v-for="post in posts" class="post_list">
             <div class="post">
                 <div v-if="!(edit_post_id == post.id)">
-                    <h3>${post.post_content}</h3>
+                    <h3>${post.post_title}</h3>
+                    <br><h4>${post.post_content}</h4>
                     <br>Author: <i>${post.user_email}</i>
                     <br>Date: <i>${post.created_on}</i>
                     <div v-if="post.created_on != post.updated_on">
@@ -59,8 +73,8 @@
                                 <div class="form-group" id="reply-new-post">
                                     <textarea class="form-control" v-model="form_reply_content"></textarea><br>
                                     <div class="text_btns">
-                                        <input class="btn btn-primary btn-lg" id="reply_post_submit" type="submit" value="Reply"/>
-                                        <input class="btn btn-default btn-lg" id="reply_post_cancel" type="button" value="Cancel" v-on:click="reply_post_button()" v-on:click="reply_post_id = null" />
+                                        <input class="btn btn-primary btn-lg" id="reply_post_submit" type="submit" value="Reply" v-on:click="expand_reply_button(post.id)"/>
+                                        <input class="btn btn-warning btn-lg" id="reply_post_cancel" type="button" value="Cancel" v-on:click="reply_post_button()" v-on:click="reply_post_id = null" />
                                     </div>
                                 </div>
                             </form>
@@ -72,13 +86,13 @@
                         <textarea class="form-control" v-model="form_edit_content"></textarea><br>
                         <div class="text_btns">
                             <input class="btn btn-primary btn-lg" id="edit_post_submit" type="submit" value="Edit"/>
-                            <input class="btn btn-default btn-lg" id="edit_post_cancel" type="button" value="Cancel" v-on:click="edit_post_id = null"/>
+                            <input class="btn btn-warning btn-lg" id="edit_post_cancel" type="button" value="Cancel" v-on:click="edit_post_id = null"/>
                         </div>
                     </div>
                 </form>
             </div>
             <transition name="slide-fade">
-            <div v-if="post.replies && !is_expanded">
+            <div v-if="post.replies && !is_expanded && expand_post_id == post.id">
                 <div v-for="reply in post.replies" class="rply_post">
                     <h4>${reply.post_content}</h4>
                     <br>Author: <i>${reply.user_email}</i>
@@ -88,20 +102,21 @@
             </transition>
         </div>
 
-        <div v-if="has_more" class="show_more">
-            <button class="btn btn-default btn-lg" id="load-more" v-on:click="get_more()">Load more</button>
+        <div class="load-button">
+            <div v-if="has_more" class="show_more">
+                <button class="btn btn-primary btn-lg" id="load-more" v-on:click="get_more()">Load more</button>
+            </div>
         </div>
-
     </div>
 
 {{else:}}
 
     <!-- Homepage -->
-    <h1 class="title">PeerPressure</h1>
+    <div class="title">PeerPressure</div>
 
     <div class="homebtns">
         <a href="{{=URL('user', '')}}" class="btn btn-primary btn-lg raised">Login</a>
-        <a href="{{=URL('user/register', '')}}" class="btn btn-default btn-lg raised">Sign Up</a>
+        <a href="{{=URL('user/register', '')}}" class="btn btn-warning btn-lg raised">Sign Up</a>
     </div>
 
     <hr class="hrline">
@@ -109,11 +124,13 @@
     <div>
         <div class="homedesc" style="float: left; width: 50%">
             <h3>What is PeerPressure?</h3>
-            <p>PeerPressure is a website which is based on peer collaboration.  Students are able to create posts
-            regarding any subject up for discussion such as: homework problems, school events, or study groups.  The possibilities
-            are endless!  After this other students can respond to the original post, adding additional information, answering a question,
-            or just providing feedback.  This peer-to-peer communication empowers students to help their fellow classmates and
-            encourages teamwork and collaboration.</p>
+            <div class="homedesc_text">
+                <h4>PeerPressure is a website which is based on peer collaboration.  Students are able to create posts
+                regarding any subject up for discussion such as: homework problems, school events, or study groups.  The possibilities
+                are endless!  After this other students can respond to the original post, adding additional information, answering a question,
+                or just providing feedback.  This peer-to-peer communication empowers students to help their fellow classmates and
+                encourages teamwork and collaboration.</h4>
+            </div>
         </div>
         <div class="homeimg" style="float: left; width: 50%">
             <div id="slider">
@@ -142,15 +159,18 @@
         </div>
         <div class="homedesc" style="float: right; width: 45%">
             <h3>Features</h3>
-            <ul>
-                <li>Unique user accounts - Individual accounts for each student</li>
-                <li>Create posts - Topics are unlimited</li>
-                <li>Edit posts - Change your question or your responses</li>
-                <li>Delete posts - Get rid of invalid information</li>
-                <li>Reply to posts - Collaboration between students</li>
-                <li>Posts show creator and when it was created</li>
-                <li>Ask questions and get answers 24/7 - Not just in the classroom</li>
-            </ul>
+            <h4>
+                <ul>
+                    <li>Unique user accounts - Individual accounts for each student</li>
+                    <li>Create posts - Topics are unlimited</li>
+                    <li>Edit posts - Change your question or your responses</li>
+                    <li>Delete posts - Get rid of invalid information</li>
+                    <li>Reply to posts - Collaboration between students</li>
+                    <li>Filter posts - See what you want fast and easy</li>
+                    <li>Posts show creator and when it was created</li>
+                    <li>Ask questions and get answers 24/7 - Not just in the classroom</li>
+                </ul>
+            </h4>
     </div>
 
     <div>
@@ -158,14 +178,14 @@
             <img src="{{=URL('static', 'images/screenshot.png')}}" />
         </div>
         <div class="homedesign" style="float: right; width: 45%">
-            <h3>Design</h3><br>
-            <ol>
-                <li>Easy to read posts identifying when and by whom the post was created</li>
-                <br>
-                <li>Edit and delete functionality</li>
-                <br>
-                <li>Reply to another user's post</li>
-            </ol>
+            <h3>Design</h3>
+            <h4>
+                <ol>
+                    <li>Easy to read posts identifying when and by whom the post was created</li><br>
+                    <li>Edit and delete functionality</li><br>
+                    <li>Reply to another user's post</li>
+                </ol>
+            </h4>
         </div>
     </div>
 {{pass}}
@@ -174,4 +194,23 @@
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>
     <script>$( document ).ready(function() {
         APP.img.startRotation();
-    });</script>
+    });
+
+    function dropdown() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                     openDropdown.classList.remove('show');
+                }
+            }
+         }
+    }
+    </script>

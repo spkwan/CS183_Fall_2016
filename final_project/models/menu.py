@@ -28,10 +28,10 @@ response.google_analytics_id = None
 # this is the main application menu add/remove items as required
 # ----------------------------------------------------------------------------------------------------------------------
 
-# response.menu = [
-#     (T('Home'), False, URL('default', 'index'), [])
-# ]
-#
+response.menu = [
+   (T('Home'), False, URL('default', 'index'), [])
+]
+
 DEVELOPMENT_MENU = True
 
 
@@ -48,8 +48,7 @@ def _():
     # ------------------------------------------------------------------------------------------------------------------
     # useful links to internal and external resources
     # ------------------------------------------------------------------------------------------------------------------
-    # response.menu += [
-    #     (T('My Sites'), False, URL('admin', 'default', 'site')),
+    response.menu += [(T('Help'), False, URL('default', 'help'))]
     #     (T('This App'), False, '#', [
     #         (T('Design'), False, URL('admin', 'default', 'design/%s' % app)),
     #         LI(_class="divider"),
@@ -79,7 +78,7 @@ def _():
     #             'admin', 'default', 'errors/' + app)),
     #         (T('About'), False, URL(
     #             'admin', 'default', 'about/' + app)),
-    #     ]),
+    #     ])
     #     ('web2py.com', False, '#', [
     #         (T('Download'), False,
     #          'http://www.web2py.com/examples/default/download'),

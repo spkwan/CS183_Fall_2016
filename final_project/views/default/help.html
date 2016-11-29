@@ -1,0 +1,47 @@
+{{extend 'layout.html'}}
+
+<div class="main_content">
+    <div class="help_title">
+        <h1>How to use PeerPressure</h1>
+    </div>
+    <hr class="hrline"><br>
+    <div class="help_steps" style="float: left; width: 55%">
+        <h3>New Users:</h3>
+        <h4>
+            <ul>
+                <li>Click 'Sign Up' on the PeerPressure homepage.</li><br>
+                <li>Enter the required information into the appropriate fields</li><br>
+                <li>Confirm your account information and click 'Sign Up'</li><br>
+            </ul>
+        </h4>
+    </div>
+    <div class="demovid" style="float: right; width: 45%">
+        <video controls="controls" width="300" height="200" name="Signup Demo" src={{=URL('static/videos/','final_project_signup.mov')}}></video>
+    </div>
+    <div class="help_steps" style="float: left; width: 55%">
+        <br>
+        <h3>Continuing Users:</h3>
+        <h4>
+            <ul>
+                <li>To add a new post:  Click 'Add Post' on the top of the page.  Enter the title of the
+                post and the content of the post then click 'Post'.  You should see your newly added post
+                at the top of the posts with your username and date of submission.</li><br>
+                <li>To edit a post:  Users can only edit posts which they are the original author of.
+                To make an edit, click the pencil icon on the bottom right of the post.  You can now edit your post
+                to your liking and once satisfied, press 'Edit'.  The post's content will be changed and the post
+                will now present the time of the edit.</li><br>
+                <li>To delete a post:  Users can only delete posts which they are the original author of.
+                To delete a post, click the trash icon on the bottom right of the post.  This will immediately remove
+                the post from the post listings and all of its replies.</li><br>
+                <li>To reply to a post:  Users can only reply to another user's post.  To reply to a post, click the
+                reply or arrow on the bottom right of a post, and enter your message in the textfield that appears.
+                    If you see a caret-down icon on the bottom right of a post that means that there are replies to that post.
+                Click the caret-down icon to expand the replies for that particular post.  Click the caret-up icon to hide the replies
+                for that particular post.</li><br>
+            </ul>
+        </h4>
+    </div>
+    <div class="demovid2" style="float: right; width: 45%">
+        <video controls="controls" width="300" height="200" name="Demo" src={{=URL('static/videos/','final_project_usage.mov')}}></video>
+    </div>
+</div>

@@ -14,6 +14,12 @@ def index():
     """
     return dict()
 
+def author():
+    return dict()
+
+def title():
+    return dict()
+
 def user():
     """
     exposes:
@@ -32,6 +38,9 @@ def user():
     """
 
     return dict(form=auth())
+
+def help():
+    return dict()
 
 
 @cache.action()

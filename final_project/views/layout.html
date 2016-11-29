@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{=T.accepted_language or 'en'}}"> <!--<![endif]-->
   <head>
+
     <meta charset="utf-8">
     <!-- www.phpied.com/conditional-comments-block-downloads/ -->
     <!-- Always force latest IE rendering engine
@@ -47,7 +48,7 @@
     (left_sidebar_enabled and 1 or 0)+(right_sidebar_enabled and 1 or 0)]
     }}
   </head>
-  <body>
+  <body style="background: URL('{{=URL('static', 'images/background-texture.jpg')}}') repeat">
     <!--[if lt IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
     <div class="w2p_flash alert alert-dismissable">{{=response.flash or ''}}</div>
     <!-- Navbar ======================================= -->
@@ -130,5 +131,11 @@
     {{pass}}
     <!-- Share ============================y============ -->
     <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
+
+    <style>
+        .statusbar { background: #EFEFEF; border-bottom: 5px #EFEFEF solid; }
+        .footer { border-bottom: 5px #EFEFEF solid; }
+    </style>
+
   </body>
 </html>

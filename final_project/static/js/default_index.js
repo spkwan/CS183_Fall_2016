@@ -23,7 +23,7 @@ var app = function() {
 
 
     self.get_posts = function () {
-        $.getJSON(get_post_url(0,4), function (data) {
+        $.getJSON(get_post_url(0,5), function (data) {
             self.vue.posts = data.posts;
             self.vue.has_more = data.has_more;
             self.vue.logged_in = data.logged_in;
@@ -33,7 +33,7 @@ var app = function() {
 
     self.get_more = function (){
         var num_posts = self.vue.posts.length;
-        $.getJSON(get_post_url(num_posts, num_posts + 4), function (data) {
+        $.getJSON(get_post_url(num_posts, num_posts + 5), function (data) {
             self.vue.has_more = data.has_more;
             self.extend(self.vue.posts, data.posts);
         });
@@ -44,18 +44,21 @@ var app = function() {
     self.add_post_button = function () {
         if(self.vue.logged_in)
             self.vue.is_adding_post = !self.vue.is_adding_post;
+        self.vue.form_title = "";
         self.vue.form_content = "";
     };
 
 
     self.add_post = function () {
       $.post(add_post_url,{
+          post_title: self.vue.form_title,
           post_content: self.vue.form_content
       }, function (data){
           $.web2py.enableElement($("#add_post_submit"));
           self.vue.posts.unshift(data.post);
           self.get_posts();
       });
+      self.vue.form_title = "";
       self.vue.form_content = "";
       self.vue.is_adding_post = !self.vue.is_adding_post;
     };
@@ -123,6 +126,7 @@ var app = function() {
     //Expand replies for a post
     self.expand_reply_button = function (post_id) {
         self.vue.is_expanded = !self.vue.is_expanded;
+        self.vue.expand_post_id = post_id;
     };
 
     //vue for image slider
@@ -166,10 +170,12 @@ var app = function() {
             is_expanded: true,
             edit_post_id: null,
             reply_post_id: null,
+            expand_post_id: null,
             posts: [],
             logged_in: false,
             has_more: false,
             form_content: null,
+            form_title: null,
             form_edit_content: null,
             form_reply_content: null
         },

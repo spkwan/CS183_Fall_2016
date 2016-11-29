@@ -31,6 +31,7 @@ def get_posts():
                 id = r.id,
                 user_email = get_user_name_from_email(r.user_email),
                 post_content = r.post_content,
+                post_title = r.post_title,
                 created_on = r.created_on,
                 updated_on = r.updated_on,
                 op = op
@@ -61,6 +62,7 @@ def get_posts():
 @auth.requires_signature()
 def add_post():
     p_id = db.post.insert(
+        post_title = request.vars.post_title,
         post_content = request.vars.post_content
     )
     p = db.post(p_id)

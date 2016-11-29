@@ -18,19 +18,31 @@
 
 /* line 15, ../sass/_main.scss */
 .title {
-  font-family: 'Gravitas One', display;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
-  text-size: 1px;
+  font-size: 700%;
+  color: #FFFFFF;
 }
 
-/* line 21, ../sass/_main.scss */
+/* line 22, ../sass/_main.scss */
 .homebtns {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
+  color: #FFFFFF;
 }
 
-/* line 27, ../sass/_main.scss */
+/* line 29, ../sass/_main.scss */
+.header {
+  text-align: center;
+}
+
+/* line 33, ../sass/_main.scss */
+.add-post-submission {
+  text-align: center;
+}
+
+/* line 37, ../sass/_main.scss */
 .hrline {
   width: 93%;
   display: block;
@@ -40,7 +52,7 @@
   padding: 0;
 }
 
-/* line 37, ../sass/_main.scss */
+/* line 47, ../sass/_main.scss */
 .hrline2 {
   width: 85%;
   display: block;
@@ -50,8 +62,9 @@
   padding: 0;
 }
 
-/* line 47, ../sass/_main.scss */
+/* line 57, ../sass/_main.scss */
 .homedesc {
+  color: #FFFFFF;
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 20px;
@@ -59,7 +72,12 @@
   font-size: 15.5px;
 }
 
-/* line 55, ../sass/_main.scss */
+/* line 66, ../sass/_main.scss */
+.homedesc_text {
+  padding-left: 30px;
+}
+
+/* line 70, ../sass/_main.scss */
 .homeimg {
   padding-top: 20px;
   padding-right: 10%;
@@ -67,13 +85,14 @@
   padding-left: 3%;
 }
 
-/* line 62, ../sass/_main.scss */
+/* line 77, ../sass/_main.scss */
 .homeimg2 {
   padding-top: 8%;
   padding-left: 4%;
+  color: #FFFFFF;
 }
 
-/* line 67, ../sass/_main.scss */
+/* line 83, ../sass/_main.scss */
 .home_screenshot img {
   height: auto;
   width: 100%;
@@ -81,59 +100,61 @@
   padding-left: 40px;
 }
 
-/* line 74, ../sass/_main.scss */
+/* line 90, ../sass/_main.scss */
 .homedesign {
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 100px;
   padding-bottom: 20px;
   font-size: 15.5px;
+  color: #FFFFFF;
 }
 
-/* line 82, ../sass/_main.scss */
+/* line 99, ../sass/_main.scss */
 .btn {
   padding: 14px 24px;
   border: 0 none;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
+  color: #FFFFFF;
 }
 
-/* line 89, ../sass/_main.scss */
+/* line 107, ../sass/_main.scss */
 .btn:focus, .btn:active:focus, .btn.active:focus {
   outline: 0 none;
 }
 
-/* line 93, ../sass/_main.scss */
+/* line 111, ../sass/_main.scss */
 .btn-primary {
   background: #0099cc;
   color: #ffffff;
 }
 
-/* line 97, ../sass/_main.scss */
+/* line 115, ../sass/_main.scss */
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
   background: #33a6cc;
 }
 
-/* line 100, ../sass/_main.scss */
+/* line 118, ../sass/_main.scss */
 .btn-primary:active, .btn-primary.active {
   background: #007299;
   box-shadow: none;
 }
 
-/* line 105, ../sass/_main.scss */
+/* line 123, ../sass/_main.scss */
 .btn-lg {
   font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
 }
 
-/* line 111, ../sass/_main.scss */
+/* line 129, ../sass/_main.scss */
 .btn-primary.raised {
   box-shadow: 0 3px 0 0 #007299;
 }
 
-/* line 114, ../sass/_main.scss */
+/* line 132, ../sass/_main.scss */
 .btn-primary.raised:active, .btn-primary.raised.active {
   background: #33a6cc;
   box-shadow: none;
@@ -141,25 +162,25 @@
   margin-top: 3px;
 }
 
-/* line 121, ../sass/_main.scss */
-.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+/* line 139, ../sass/_main.scss */
+.btn-warning:hover, .btn-default:warning, .btn-warning:active, .btn-warning.active, .open > .dropdown-toggle.btn-warning {
   background: #6C6C6C;
 }
 
-/* line 125, ../sass/_main.scss */
-.btn-default.raised {
-  box-shadow: 0 3px 0 0 #1E1E1E;
+/* line 143, ../sass/_main.scss */
+.btn-warning.raised {
+  box-shadow: 0 3px 0 0 #DA7A00;
 }
 
-/* line 128, ../sass/_main.scss */
-.btn-default.raised:active, .btn-primary.raised.active {
-  background: #747474;
+/* line 146, ../sass/_main.scss */
+.btn-warning.raised:active, .btn-primary.raised.active {
+  background: #DA7A00;
   box-shadow: none;
   margin-bottom: -3px;
   margin-top: 3px;
 }
 
-/* line 135, ../sass/_main.scss */
+/* line 153, ../sass/_main.scss */
 .imgresize {
   width: 125%;
   height: 250px;
@@ -167,62 +188,67 @@
   align: left;
 }
 
-/* line 142, ../sass/_main.scss */
+/* line 160, ../sass/_main.scss */
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
 }
 
-/* line 145, ../sass/_main.scss */
+/* line 163, ../sass/_main.scss */
 .fade-enter, .fade-leave-active {
   opacity: 0;
 }
 
-/* line 149, ../sass/_main.scss */
+/* line 167, ../sass/_main.scss */
 .slide-fade-enter-active {
   transition: all .5s ease;
 }
 
-/* line 152, ../sass/_main.scss */
+/* line 170, ../sass/_main.scss */
 .slide-fade-leave-active {
   transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-/* line 155, ../sass/_main.scss */
+/* line 173, ../sass/_main.scss */
 .slide-fade-enter, .slide-fade-leave-active {
   padding-left: 10px;
   opacity: 0;
 }
 
-/* line 160, ../sass/_main.scss */
+/* line 178, ../sass/_main.scss */
 .add-new-post {
-  align: center;
+  text-align: center;
 }
 
-/* line 164, ../sass/_main.scss */
+/* line 182, ../sass/_main.scss */
+.load-button {
+  text-align: center;
+}
+
+/* line 186, ../sass/_main.scss */
 .new_post {
   padding-top: 20px;
 }
 
-/* line 168, ../sass/_main.scss */
+/* line 190, ../sass/_main.scss */
 .icons {
   padding-left: 95%;
 }
 
-/* line 172, ../sass/_main.scss */
+/* line 194, ../sass/_main.scss */
 .text_btns {
   padding-left: 40%;
 }
 
-/* line 176, ../sass/_main.scss */
+/* line 198, ../sass/_main.scss */
 .main_content {
   display: block;
   clear: both;
 }
-/* line 179, ../sass/_main.scss */
+/* line 201, ../sass/_main.scss */
 .main_content .splash_container {
   text-align: center;
 }
-/* line 181, ../sass/_main.scss */
+/* line 203, ../sass/_main.scss */
 .main_content .splash_container .main_splash {
   color: #aaa;
   font-size: 1.2em;
@@ -230,99 +256,109 @@
   display: inline-block;
   width: 90%;
 }
-/* line 187, ../sass/_main.scss */
+/* line 209, ../sass/_main.scss */
 .main_content .splash_container .main_splash h3 {
   font-size: 1.1em;
   color: #aaa;
 }
-/* line 190, ../sass/_main.scss */
+/* line 212, ../sass/_main.scss */
 .main_content .splash_container .main_splash h3 .fa {
   margin-right: 0.5em;
 }
-/* line 197, ../sass/_main.scss */
+/* line 219, ../sass/_main.scss */
 .main_content .post {
-  border-color: #cccccc;
+  border-color: #B9B9B9;
   border-style: solid;
   border-width: 1px;
-  background: #eeeeee;
+  background: #FAFAFA;
   margin: 20px 0px 20px 0px;
   padding: 20px;
   -moz-border-radius: 16px;
   -webkit-border-radius: 16px;
   border-radius: 16px;
 }
-/* line 207, ../sass/_main.scss */
+/* line 229, ../sass/_main.scss */
 .main_content .rply_post {
-  border-color: #cccccc;
+  border-color: #B9B9B9;
   border-style: solid;
   border-width: 1px;
-  background: #eeeeee;
+  background: #FAFAFA;
   margin: 20px 0px 40px 5%;
   padding: 10px;
   -moz-border-radius: 16px;
   -webkit-border-radius: 16px;
   border-radius: 16px;
 }
-/* line 217, ../sass/_main.scss */
+/* line 239, ../sass/_main.scss */
 .main_content .post_listing {
   margin: 10px 0px 10px 0px;
   padding: 0 0 0 0px;
 }
-/* line 222, ../sass/_main.scss */
+/* line 244, ../sass/_main.scss */
 .main_content .post_list {
   padding-top: 10px;
 }
-/* line 226, ../sass/_main.scss */
+/* line 248, ../sass/_main.scss */
 .main_content .post_info {
   padding-right: 50px;
 }
-/* line 230, ../sass/_main.scss */
+/* line 252, ../sass/_main.scss */
 .main_content .vue_hidden {
   display: none;
 }
-/* line 234, ../sass/_main.scss */
+/* line 256, ../sass/_main.scss */
 .main_content i.fa {
   padding-right: 5px;
 }
-/* line 238, ../sass/_main.scss */
+/* line 260, ../sass/_main.scss */
 .main_content .login_explanation {
   margin-top: 10px;
   color: #aaa;
 }
-/* line 243, ../sass/_main.scss */
+/* line 265, ../sass/_main.scss */
 .main_content div.main_section {
   margin-top: 4em;
 }
-/* line 247, ../sass/_main.scss */
+/* line 269, ../sass/_main.scss */
 .main_content div.main_icon_section {
   margin-top: 5em;
   color: #ddd;
 }
-/* line 252, ../sass/_main.scss */
+/* line 274, ../sass/_main.scss */
 .main_content div.container_buttons {
   width: 90%;
 }
-/* line 254, ../sass/_main.scss */
+/* line 276, ../sass/_main.scss */
 .main_content div.container_buttons button#save_later_button {
   float: right;
 }
-/* line 257, ../sass/_main.scss */
+/* line 279, ../sass/_main.scss */
 .main_content div.container_buttons button.btn-default {
   color: #777;
 }
-/* line 261, ../sass/_main.scss */
+/* line 283, ../sass/_main.scss */
 .main_content h1 {
   font-size: 500%;
 }
 
-/* line 266, ../sass/_main.scss */
+/* line 288, ../sass/_main.scss */
 .footer {
   background: none;
 }
 
-/* line 269, ../sass/_main.scss */
+/* line 292, ../sass/_main.scss */
+h1 {
+  color: #FFFFFF;
+}
+
+/* line 296, ../sass/_main.scss */
 h2 {
-  color: #999;
+  color: #FFFFFF;
+}
+
+/* line 300, ../sass/_main.scss */
+.container {
+  color: #FFFFFF;
 }
 
 /*
@@ -335,6 +371,97 @@ h2 {
   }
 }
 */
+/* line 315, ../sass/_main.scss */
+.help_title {
+  text-align: center;
+}
+
+/* line 319, ../sass/_main.scss */
+.help_steps {
+  color: #FFFFFF;
+  padding-left: 40px;
+  padding-bottom: 40px;
+}
+
+/* line 325, ../sass/_main.scss */
+.demovid {
+  text-align: center;
+  padding-right: 40px;
+  padding-bottom: 40px;
+}
+
+/* line 331, ../sass/_main.scss */
+.demovid2 {
+  text-align: center;
+  padding-right: 40px;
+  padding-top: 100px;
+}
+
+/* line 337, ../sass/_main.scss */
+.filter {
+  text-align: right;
+}
+
+/* Dropdown Button */
+/* line 342, ../sass/_main.scss */
+.dropbtn {
+  font-size: 14px;
+  line-height: 1.33;
+  border-radius: 6px;
+  background: #0099cc;
+  color: #ffffff;
+  padding: 14px 24px;
+  border: 0 none;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Dropdown button on hover & focus */
+/* line 356, ../sass/_main.scss */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #33a6cc;
+}
+
+/* The container <div> - needed to position the dropdown content */
+/* line 361, ../sass/_main.scss */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+/* line 367, ../sass/_main.scss */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 115px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Links inside the dropdown */
+/* line 376, ../sass/_main.scss */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Change color of dropdown links on hover */
+/* line 385, ../sass/_main.scss */
+.dropdown-content a:hover {
+  background-color: #D0D0D0;
+}
+
+/* Show the dropdown menu */
+/* line 388, ../sass/_main.scss */
+.show {
+  display: block;
+}
+
 /* line 1, ../sass/_navbar.scss */
 .navbar-inverse {
   background-color: #dddddd;

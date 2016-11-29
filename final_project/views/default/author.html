@@ -1,0 +1,133 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+
+{{extend 'layout.html'}}
+
+{{block head}}
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+    var get_posts_url = "{{=URL('api_auth', 'get_posts')}}";
+    var add_post_url = "{{=URL('api_auth', 'add_post', user_signature=True)}}";
+    var del_post_url = "{{=URL('api_auth', 'del_post', user_signature=True)}}";
+    var edit_post_url = "{{=URL('api_auth', 'edit_post', user_signature=True)}}";
+    var reply_post_url = "{{=URL('api_auth', 'reply_post', user_signature=True)}}";
+</script>
+{{end}}
+
+<div class="main_content">
+{{if auth.user_id:}}
+    <div id="vue-div" class="display:none">
+        <div class="header">
+            <h1>Posts</h1>
+        </div>
+
+        <div class="add-new-post">
+            <button v-if="!is_adding_post" class="btn btn-primary btn-lg" v-on:click="add_post_button()" v-bind:class="{'disabled': !logged_in}"><i class="fa fa-plus"></i> Add Post</button>
+        </div>
+
+        <div v-if="is_adding_post" id="add_post_div"><br>
+            <form action="#" v-on:submit.prevent="add_post" class="form-horizontal" enctype="multipart/form-data" method="post">
+                <div class="form-group" id="add-new-post">
+                    <textarea class="form-control" v-model="form_title" placeholder="Title"></textarea><br>
+                    <textarea class="form-control" v-model="form_content" placeholder="Content"></textarea><br>
+                    <div class="add-post-submission">
+                        <input class="btn btn-primary btn-lg" id="add_post_submit" type="submit" value="Post"/>
+                        <input class="btn btn-warning btn-lg" id="add_post_cancel" type="button" value="Cancel" v-on:click="add_post_button()"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="filter">
+            <div class="dropdown">
+                <button onclick="dropdown()" class="dropbtn"><i class="fa fa-filter"></i>Filter-Author</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="http://127.0.0.1:8000/final_project/default/author">Author</a>
+                    <a href="http://127.0.0.1:8000/final_project">Date</a>
+                    <a href="http://127.0.0.1:8000/final_project/default/title">Title</a>
+            </div>
+        </div>
+        </div>
+
+        <div v-for="post in posts" class="post_list">
+            <div class="post">
+                <div v-if="!(edit_post_id == post.id)">
+                    <h3>${post.post_title}</h3>
+                    <br><h4>${post.post_content}</h4>
+                    <br>Author: <i>${post.user_email}</i>
+                    <br>Date: <i>${post.created_on}</i>
+                    <div v-if="post.created_on != post.updated_on">
+                        Updated: <i>${post.updated_on}</i>
+                    </div>
+                    <div v-if="logged_in" class="icons">
+                        <i class="fa fa-pencil" v-if="post.op" v-on:click="update_post(post.id, post.post_content)"></i>
+                        <i class="fa fa-trash-o" v-if="post.op" v-on:click="delete_post(post.id)"></i>
+                    </div>
+                    <div v-if="logged_in" class="icons">
+                        <i class="fa fa-reply" v-if="!post.op" v-on:click="reply_post_button(post.id)"></i>
+                        <i class="fa fa-caret-up" v-if="post.replies && !is_expanded" v-on:click="expand_reply_button(post.id)"></i>
+                        <i class="fa fa-caret-down" v-if="post.replies && is_expanded" v-on:click="expand_reply_button(post.id)"></i>
+                    </div>
+                    <div v-if="logged_in">
+                        <div v-if="is_replying_post" id="reply_post_div"><br>
+                            <form action="#" v-on:submit.prevent="reply_post" class="form-horizontal" enctype="multipart/form-data" method="post" v-if="reply_post_id == post.id">
+                                <div class="form-group" id="reply-new-post">
+                                    <textarea class="form-control" v-model="form_reply_content"></textarea><br>
+                                    <div class="text_btns">
+                                        <input class="btn btn-primary btn-lg" id="reply_post_submit" type="submit" value="Reply" v-on:click="expand_reply_button(post.id)"/>
+                                        <input class="btn btn-warning btn-lg" id="reply_post_cancel" type="button" value="Cancel" v-on:click="reply_post_button()" v-on:click="reply_post_id = null" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <form action="#" v-on:submit.prevent="edit_post" class="form-horizontal" enctype="multipart/form-data" method="post" v-if="edit_post_id == post.id">
+                    <div class="form-group">
+                        <textarea class="form-control" v-model="form_edit_content"></textarea><br>
+                        <div class="text_btns">
+                            <input class="btn btn-primary btn-lg" id="edit_post_submit" type="submit" value="Edit"/>
+                            <input class="btn btn-warning btn-lg" id="edit_post_cancel" type="button" value="Cancel" v-on:click="edit_post_id = null"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <transition name="slide-fade">
+            <div v-if="post.replies && !is_expanded && expand_post_id == post.id">
+                <div v-for="reply in post.replies" class="rply_post">
+                    <h4>${reply.post_content}</h4>
+                    <br>Author: <i>${reply.user_email}</i>
+                    <br>Date: <i>${reply.created_on}</i>
+                </div>
+            </div>
+            </transition>
+        </div>
+
+        <div class="load-button">
+            <div v-if="has_more" class="show_more">
+                <button class="btn btn-primary btn-lg" id="load-more" v-on:click="get_more()">Load more</button>
+            </div>
+        </div>
+    </div>
+    {{pass}}
+</div>
+
+<script src="{{=URL('static', 'js/default_index.js')}}"></script>
+    <script>
+    function dropdown() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                     openDropdown.classList.remove('show');
+                }
+            }
+         }
+    }
+    </script>
