@@ -48,6 +48,7 @@ def _():
     # ------------------------------------------------------------------------------------------------------------------
     # useful links to internal and external resources
     # ------------------------------------------------------------------------------------------------------------------
+    response.menu += [(T('Calendar'), False, URL('default', 'calendar'))]
     response.menu += [(T('Help'), False, URL('default', 'help'))]
     #     (T('This App'), False, '#', [
     #         (T('Design'), False, URL('admin', 'default', 'design/%s' % app)),

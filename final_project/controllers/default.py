@@ -20,6 +20,9 @@ def author():
 def title():
     return dict()
 
+def calendar():
+    return dict()
+
 def user():
     """
     exposes:

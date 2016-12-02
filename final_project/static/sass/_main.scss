@@ -19,6 +19,13 @@
   color: #FFFFFF;
 }
 
+.titlecal {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 400%;
+  color: #FFFFFF;
+}
+
 .homebtns {
   text-align: center;
   padding-top: 20px;
@@ -46,6 +53,16 @@
 
 .hrline2 {
    width: 85%;
+   display: block;
+   height: 1px;
+   border: 0;
+   border-top: 1px solid #ccc;
+   padding: 0;
+
+}
+
+.hrline3 {
+   width: 40%;
    display: block;
    height: 1px;
    border: 0;
@@ -91,6 +108,15 @@
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 100px;
+  padding-bottom: 20px;
+  font-size: 15.5px;
+  color: #FFFFFF;
+}
+
+.homedesigncalendar {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 225px;
   padding-bottom: 20px;
   font-size: 15.5px;
   color: #FFFFFF;
@@ -332,6 +358,14 @@ h2 {
   text-align: center;
   padding-right: 40px;
   padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+.demovid3 {
+  text-align: center;
+  padding-right: 40px;
+  padding-top: 60px;
+  padding-bottom: 40px;
 }
 
 .filter {
@@ -386,3 +420,7 @@ h2 {
 
 /* Show the dropdown menu */
 .show {display:block;}
+
+.gcalendar {
+  text-align: center;
+}

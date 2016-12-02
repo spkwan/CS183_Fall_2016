@@ -15,6 +15,30 @@
 
 <div class="main_content">
 {{if auth.user_id:}}
+
+    <!-- Only reveal menu to logged in users -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          {{=response.logo or ''}}
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            {{='auth' in globals() and auth.navbar('Welcome',mode='dropdown') or ''}}
+          </ul>
+          {{if response.menu:}}
+          {{=MENU(response.menu, _class='nav navbar-nav',li_class='dropdown',ul_class='dropdown-menu')}}
+          {{pass}}
+        </div>
+      </div>
+    </nav>
+
     <div id="vue-div" class="display:none">
         <div class="header">
             <h1>Posts</h1>
@@ -129,7 +153,7 @@
                 regarding any subject up for discussion such as: homework problems, school events, or study groups.  The possibilities
                 are endless!  After this other students can respond to the original post, adding additional information, answering a question,
                 or just providing feedback.  This peer-to-peer communication empowers students to help their fellow classmates and
-                encourages teamwork and collaboration.</h4>
+                encourages teamwork and collaboration.  PeerPressure allows students to ask questions and get answers 24/7 - Not just in the classroom!</h4>
             </div>
         </div>
         <div class="homeimg" style="float: left; width: 50%">
@@ -167,8 +191,6 @@
                     <li>Delete posts - Get rid of invalid information</li>
                     <li>Reply to posts - Collaboration between students</li>
                     <li>Filter posts - See what you want fast and easy</li>
-                    <li>Posts show creator and when it was created</li>
-                    <li>Ask questions and get answers 24/7 - Not just in the classroom</li>
                 </ul>
             </h4>
     </div>
@@ -187,6 +209,21 @@
                 </ol>
             </h4>
         </div>
+    </div>
+        <div class="home_screenshot" style="float: left; width: 55%">
+            <img src="{{=URL('static', 'images/gcalendar.png')}}" />
+        </div>
+        <div class="homedesigncalendar" style="float: right; width: 45%">
+            <h3>Google Calendar</h3>
+            <h4>
+                <ul>
+                    <li>Keep up-to-date with all class activities</li><br>
+                    <li>Add events to your Google calendar</li><br>
+                </ul>
+            </h4>
+        </div>
+    <div>
+
     </div>
 {{pass}}
 </div>

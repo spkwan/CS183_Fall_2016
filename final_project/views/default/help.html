@@ -1,5 +1,28 @@
 {{extend 'layout.html'}}
 
+<!-- Only reveal menu to logged in users -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {{=response.logo or ''}}
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                {{='auth' in globals() and auth.navbar('Welcome',mode='dropdown') or ''}}
+            </ul>
+            {{if response.menu:}}
+                {{=MENU(response.menu, _class='nav navbar-nav',li_class='dropdown',ul_class='dropdown-menu')}}
+            {{pass}}
+        </div>
+    </div>
+</nav>
+
 <div class="main_content">
     <div class="help_title">
         <h1>How to use PeerPressure</h1>
@@ -18,6 +41,7 @@
     <div class="demovid" style="float: right; width: 45%">
         <video controls="controls" width="300" height="200" name="Signup Demo" src={{=URL('static/videos/','final_project_signup.mov')}}></video>
     </div>
+
     <div class="help_steps" style="float: left; width: 55%">
         <br>
         <h3>Continuing Users:</h3>
@@ -41,7 +65,22 @@
             </ul>
         </h4>
     </div>
+
     <div class="demovid2" style="float: right; width: 45%">
         <video controls="controls" width="300" height="200" name="Demo" src={{=URL('static/videos/','final_project_usage.mov')}}></video>
+    </div>
+    <div class="help_steps" style="float: left; width: 55%">
+        <br>
+        <h3>Google Calendar</h3>
+        <h4>
+            PeerPressure includes a Google calendar which displays all upcomming events for a student's course.  Events are added by the main administrator
+            or teacher.  By clicking the 'Calendar' button in the top menu bar the user is navigated to the Google calendar.  Here the user can click on an event on the calendar to view
+            its details such as location, time, and other additional information.  Google calendar supports Google maps, thus if a user clicks on 'map' within the
+            details for an event, it opens a Google map tab to show exactly where the event is going to be held.
+            The user can also add the event to his/her Google calendar by simply clicking on the event and pressing 'Copy to my calendar'.
+        </h4>
+    </div>
+        <div class="demovid3" style="float: right; width: 45%">
+        <video controls="controls" width="300" height="200" name="Demo" src={{=URL('static/videos/','demo-gcalendar.mov')}}></video>
     </div>
 </div>
